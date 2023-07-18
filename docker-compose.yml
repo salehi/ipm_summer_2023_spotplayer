@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  ipm:
+    build: .
+    restart: always
+    network_mode: host
+    security_opt:
+      - seccomp:unconfined
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10k"
+        max-file: "1"
+    entrypoint:
+      - python
+      - -u
+      - main.py
